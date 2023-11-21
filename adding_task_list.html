@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="add">
+      <input type="text" id="add_button" />
+      <label for="add_button">
+        <button id="button">Add</button>
+      </label>
+    </div>
+
+    <div class="task_list">
+      <form id="tasks"></form>
+    </div>
+
+    <script>
+      "use strict";
+      let button = document.querySelector("#button");
+      let taskList = document.querySelector(".task_list");
+
+      var text_input = document.querySelector("#add_button");
+      function addTask() {
+        let x = taskList.children[0].children.length;
+
+        let task = `<div class="task task_${x + 1}">
+
+              <input type="checkbox" id="task_${x + 1}" />
+              <label for="task_${x + 1}">${text_input.value}</label>
+
+          </div>`;
+
+        if (text_input.value == "") {
+          alert("Value expected!");
+        } else {
+          document
+            .querySelector("#tasks")
+            .insertAdjacentHTML("beforeend", task);
+        }
+      }
+
+      button.addEventListener("click", addTask);
+    </script>
+  </body>
+</html>
